@@ -18,7 +18,7 @@ public class Product {
 	private String productDescription;
 	private long price;
 	private java.sql.Timestamp manufactureDate;
-	private String productImage;
+	private String image;
 	private long brandBrandId;
 
 	@ManyToOne
@@ -86,11 +86,11 @@ public class Product {
 	}
 
 	public String getProductImage() {
-		return productImage;
+		return image;
 	}
 
 	public void setProductImage(String productImage) {
-		this.productImage = productImage;
+		this.image = productImage;
 	}
 
 	public List<Color> getColorList() {
