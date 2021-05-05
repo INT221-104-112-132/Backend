@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
+import int221.project.Porject221.exceptions.ExceptionResponse;
+import int221.project.Porject221.exceptions.ProductException;
 import int221.project.Porject221.models.Product;
 import int221.project.Porject221.repositories.ProductRepository;
 
@@ -50,12 +52,23 @@ public class ProductController {
     
     @PostMapping("/addproduct")
     public Product create(@RequestBody Product newProduct) {
+    	if(productRepository.findById(newProduct.getProductId()).orElse(null) != null) {
+    		throw new ProductException(ExceptionResponse.ERROR_CODE.ITEM_ALREADY_EXIST,
+					"product id: {"+ newProduct.getProductId() + "} already exit");
+    	}else if(productRepository.findByProductName(newProduct.getProductName()) != null) {
+    		throw new ProductException(ExceptionResponse.ERROR_CODE.ITEM_ALREADY_EXIST,
+					"product name: {"+ newProduct.getProductName() + "} already exit");
+    	}
         return productRepository.save(newProduct);
     }
 	
     @PutMapping("/edit/{id}")
     public Product update(@RequestPart Product updateProduct,@PathVariable Long id) {
         Product product = productRepository.findById(id).orElse(null);
+        if(productRepository.findByProductName(updateProduct.getProductName()) != null) {
+    		throw new ProductException(ExceptionResponse.ERROR_CODE.ITEM_ALREADY_EXIST,
+					"product name: {"+ updateProduct.getProductName() + "} already exit");
+    	}
             product.setProductName(updateProduct.getProductName());
             product.setProductDescription(updateProduct.getProductDescription());
             product.setBrand(updateProduct.getBrand());
@@ -68,8 +81,8 @@ public class ProductController {
     
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id) {
-        Product prod = productRepository.findById(id).orElse(null);
-        productRepository.delete(prod);
+        Product product = productRepository.findById(id).orElse(null);
+        productRepository.delete(product);
     }
 	
 }
