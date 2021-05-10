@@ -5,8 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix ="smartphone.strorage")
 public class StorageProperties {
 
-
-    private String location ;
+    private String location;
 
     public String getLocation() {
         return location;
