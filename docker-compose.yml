@@ -1,4 +1,4 @@
-version: '2.2'
+version: '2.5'
 services:
     backend:
         container_name: backend
@@ -12,5 +12,5 @@ services:
 networks:
         default:
             external:
-                name: int221-project
+                name: project221
 
