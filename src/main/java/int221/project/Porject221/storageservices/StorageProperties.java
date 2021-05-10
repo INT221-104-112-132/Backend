@@ -2,7 +2,7 @@ package int221.project.Porject221.storageservices;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix ="smartphone.strorage")
+@ConfigurationProperties(prefix ="smartphonedb.storage")
 public class StorageProperties {
 
     private String location;
