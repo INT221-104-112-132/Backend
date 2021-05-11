@@ -4,10 +4,6 @@ services:
         container_name: backend
         build: .
         image: backend
-        environment:
-          - MYSQL_DATABASE=smartphonedb
-          - MYSQL_USER=user132
-          - MYSQL_ROOT_PASSWORD=warm12344
         volumes:
             - /home/athipat/Backend/public:/tmp
         ports:
