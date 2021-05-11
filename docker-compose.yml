@@ -3,7 +3,7 @@ services:
     backend:
         container_name: backend
         build: .
-        image: openjdk:16-jdk-alpine
+        image: backend
         environment:
           - MYSQL_DATABASE=smartphonedb
           - MYSQL_USER=user132
