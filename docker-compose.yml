@@ -6,6 +6,8 @@ services:
         image: backend
         volumes:
             - /home/athipat/Backend/public:/tmp
+        ports:
+            - "3000"
         restart: always
         
 networks:
