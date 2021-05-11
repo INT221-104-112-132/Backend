@@ -4,11 +4,16 @@ services:
         container_name: backend
         build: .
         image: openjdk:16-jdk-alpine
+        environment:
+          - MYSQL_DATABASE=smartphonedb
+          - MYSQL_USER=user132
+          - MYSQL_ROOT_PASSWORD=warm12344
         volumes:
             - /home/athipat/Backend/public:/tmp
         ports:
             - "3000:3000"
         restart: always
+        
 networks:
         default:
             external:
