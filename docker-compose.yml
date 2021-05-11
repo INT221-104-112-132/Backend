@@ -3,7 +3,7 @@ services:
     backend:
         container_name: backend
         build: .
-        image: backend
+        image: openjdk:16-jdk-alpine
         volumes:
             - /home/athipat/Backend/public:/tmp
         ports:

@@ -1,4 +1,4 @@
-FROM openjdk:16-jdk-alpine
+FROM openjdk:11-jdk
 VOLUME /tmp
 EXPOSE 3000
 ARG JAR_FILE=target/Porject221-0.0.1-SNAPSHOT.jar
